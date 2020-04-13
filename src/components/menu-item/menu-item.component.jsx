@@ -3,6 +3,9 @@ import { withRouter } from "react-router-dom";
 
 import "./menu-item.styles.scss";
 
+// Dynamic className using template literals
+// onClick combines the Url that the page you are already on and the linkUrl from the item in the sections array
+// Dynamic backgroundImage from the sections array
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <div 
     className={`${size} menu-item`} 

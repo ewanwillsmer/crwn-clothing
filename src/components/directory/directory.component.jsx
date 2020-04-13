@@ -44,11 +44,15 @@ class Directory extends React.Component {
       ],
     };
   }
-
+  //Maps the MenuItems from the array. You can use otherSectionProps when you are just matching props ie linkUrl={linkUrl}
   render() {
+
+    const {sections} = this.state;
+
     return (
+      
       <div className="directory-menu">
-        {this.state.sections.map(({ id, ...otherSectionProps }) => (
+        {sections.map(({ id, ...otherSectionProps }) => (
           <MenuItem   
             id={id}
             {... otherSectionProps}

@@ -17,12 +17,16 @@ class SignUp extends React.Component {
     };
   }
 
+  // Sets state to what the user has typed in the input
   handleChange = (event) => {
     const { name, value } = event.target;
 
     this.setState({ [name]: value });
   };
 
+  // If password and confirmPassword don't match, returns to start
+  // Defines a new Firebase user using auth
+  // Once userProfileDocument is created, returns state to empty strings
   handleSubmit = async (event) => {
     event.preventDefault();
 

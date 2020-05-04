@@ -1,21 +1,27 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-import "./collection-preview.styles.scss";
-import CollectionItem from "../collection-item/collection-item.component.jsx";
+import CollectionItem from "../collection-item/collection-item.component";
 
-// Renders CollectionItems from the nested items array in the SHOP_DATA file
-// Filters to only show the first four items
-const CollectionPreview = ({ id, title, items }) => (
-  <div className="collection-preview">
-    <h1 className="title">{title.toUpperCase()}</h1>
-    <div className="preview">
+import {
+  CollectionPreviewContainer,
+  TitleContainer,
+  PreviewContainer,
+} from "./collection-preview.styles";
+
+const CollectionPreview = ({ title, items, history, match, routeName }) => (
+  <CollectionPreviewContainer>
+    <TitleContainer onClick={() => history.push(`${match.path}/${routeName}`)}>
+      {title.toUpperCase()}
+    </TitleContainer>
+    <PreviewContainer>
       {items
         .filter((item, idx) => idx < 4)
         .map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}
-    </div>
-  </div>
+    </PreviewContainer>
+  </CollectionPreviewContainer>
 );
 
-export default CollectionPreview;
+export default withRouter(CollectionPreview);

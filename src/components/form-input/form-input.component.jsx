@@ -1,24 +1,20 @@
 import React from "react";
 
-import "./form-input.styles.scss";
+import {
+  GroupContainer,
+  FormInputContainer,
+  FormInputLabel,
+} from "./form-input.styles";
 
-// Generates dynamic FormInput component that passes onChange up to the SignIn component
-// Has a dynamic className depending on if the value prop is non-empty
-// Only generates a label a label prop is passed down eg. would not render a label for a button
-const FormInput = ({ handleChange, label, ...otherProps }) => (
-  <div className="group">
-    <input className="form-input" onChange={handleChange} {...otherProps} />
-
+const FormInput = ({ handleChange, label, ...props }) => (
+  <GroupContainer>
+    <FormInputContainer onChange={handleChange} {...props} />
     {label ? (
-      <label
-        className={`${
-          otherProps.value.length ? "shrink" : ""
-        } form-input-label`}
-      >
+      <FormInputLabel className={props.value.length ? "shrink" : ""}>
         {label}
-      </label>
+      </FormInputLabel>
     ) : null}
-  </div>
+  </GroupContainer>
 );
 
 export default FormInput;
